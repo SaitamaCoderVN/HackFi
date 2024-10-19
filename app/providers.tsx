@@ -7,13 +7,64 @@ import {
   getDefaultConfig,
 } from "@rainbow-me/rainbowkit";
 import { trustWallet, ledgerWallet } from "@rainbow-me/rainbowkit/wallets";
-import { klaytn, klaytnBaobab } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiProvider, http } from "wagmi";
 
 const { wallets } = getDefaultWallets();
 
-export const config = getDefaultConfig({
+// Define the Unique chain
+const bifrostMainnet = {
+  id: 3068, // Sửa thành 8880 hoặc "0x22b0"
+  name: "Bifrost Mainnet",
+  network: "bifrost-mainnet",
+  nativeCurrency: {
+    name: "Bifrost Mainnet",
+    symbol: "BFC",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://public-01.mainnet.bifrostnetwork.com/rpc"],
+      websocket: ["wss://public-01.mainnet.bifrostnetwork.com/rpc"],
+    },
+    public: {
+      http: ["https://public-01.mainnet.bifrostnetwork.com/rpc"],
+      websocket: ["wss://public-01.mainnet.bifrostnetwork.com/rpc"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "BifrostScan", url: "https://explorer.mainnet.bifrostnetwork.com/tx/" },
+  },
+  testnet: false,
+};
+
+// Define the Unique chain
+const bifrostTestnet = {
+  id: 49088,
+  name: "Bifrost Testnet",
+  network: "bifrost-testnet",
+  nativeCurrency: {
+    name: "Bifrost Testnet",
+    symbol: "BFC",
+    decimals: 18,
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://public-01.testnet.bifrostnetwork.com/rpc"],
+      websocket: ["wss://public-01.testnet.bifrostnetwork.com/rpc"],
+    },
+    public: {
+      http: ["https://public-01.testnet.bifrostnetwork.com/rpc"],
+      websocket: ["wss://public-01.testnet.bifrostnetwork.com/rpc"],
+    },
+  },
+  blockExplorers: {
+    default: { name: "BifrostScan", url: "https://explorer.testnet.bifrostnetwork.com/tx/" },
+  },
+  testnet: true,
+};
+
+const config = getDefaultConfig({
   appName: "DApp Bootcamp Frontends",
   projectId: "b735f0d8b8e242fb3e26f7c8dd1062b1",
   wallets: [
@@ -23,10 +74,10 @@ export const config = getDefaultConfig({
       wallets: [trustWallet, ledgerWallet],
     },
   ],
-  chains: [klaytn, klaytnBaobab],
+  chains: [bifrostMainnet, bifrostTestnet],
   transports: {
-    [klaytn.id]: http("https://public-en-cypress.klaytn.net"),
-    [klaytnBaobab.id]: http("https://public-en.kairos.node.kaia.io"),
+    [3068]: http("https://public-01.mainnet.bifrostnetwork.com/rpc"),
+    [49088]: http("https://public-01.testnet.bifrostnetwork.com/rpc"),
   },
   ssr: true,
 });

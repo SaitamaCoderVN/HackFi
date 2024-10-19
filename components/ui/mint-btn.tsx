@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 
 
-const TARGET_TEXT = "Shooting Shit";
+const TARGET_TEXT = "Shooting HackFi";
 const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
 

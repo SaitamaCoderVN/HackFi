@@ -8,6 +8,7 @@ import HF4 from '@/assets/story/hackfi_4.png';
 const images = [HF1, HF2, HF3, HF4];
 
 const StoryPage: React.FC = () => {
+  
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Function to handle navigation

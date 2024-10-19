@@ -2,10 +2,9 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "@/assets/hacker-logo.png";
-import { log } from "console";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 function Header() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -16,7 +15,7 @@ function Header() {
     { href: "/story", label: "Story 📖" },
     { href: "/fire", label: "Fire 🔥" },
     { href: "/clean", label: "Clean 🧹" },
-    { href: "/super-shit", label: "Super Anti 🚩" },
+    { href: "/super-hack", label: "Super HackFi 🚩" },
   ];
 
   const toggleMobileNav = () => {
@@ -40,16 +39,7 @@ function Header() {
         </div>
 
         <div className="hidden lg:flex gap-10">
-          {/* <ul className="flex gap-10 text-xl px-4 md:text-xl font-semibold text-neutral-700 dark:text-zinc-400 max-w-4xl leading-relaxed lg:leading-snug text-left mx-auto">
-            {navItems.map((item, index) => (
-              <li key={index} className="py-1">
-                <Link href={item.href}>
-                  <div className="text-black">{item.label}</div>
-                </Link>
-              </li>
-            ))}
-          </ul> */}
-           <ul className="flex gap-10 text-xl px-4 md:text-xl font-semibold text-neutral-700 dark:text-zinc-400 max-w-4xl leading-relaxed lg:leading-snug text-left mx-auto">
+        <ul className="flex gap-10 text-xl px-4 md:text-xl font-semibold text-neutral-700 dark:text-zinc-400 max-w-4xl leading-relaxed lg:leading-snug text-left mx-auto">
             {navItems.map((item, index) => {
               // Check if the current item href matches the active route
               const isActive =pathname === item.href;

@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "HackFi",
-  description: "Fire Hack NFT for your friends",
+  description: "Shoot HackFi NFT for your friends",
 };
 
 export default function RootLayout({

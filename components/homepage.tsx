@@ -10,16 +10,14 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from "wagmi";
-import { abi } from "./abi";
+import { nftAbi } from "./nft-abi";
 import { Hero, Highlight } from "./ui/hero";
 import dynamic from "next/dynamic";
 import { useChainId } from "wagmi";
-import { CONTRACT_ADDRESS_BAOBAB, CONTRACT_ADDRESS_CYPRESS } from "./contract";
+import { CONTRACT_NFT_ADDRESS_BAOBAB, CONTRACT_NFT_ADDRESS_CYPRESS } from "./contract";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import HeroImage from "./svgcomponents/HeroImage";
-// import HackMp4 from "@/assets/Hacker.mp4";
-
 // import HeroImage from "@/assets/HeroImage.svg";
 
 const formSchema = z.object({
@@ -47,17 +45,17 @@ function HomePage() {
     // Convert 'to' address to appropriate format
     try {
       await writeContract({
-        abi,
+        abi: nftAbi,
         address:
-          chainId === 1001 ? CONTRACT_ADDRESS_BAOBAB : CONTRACT_ADDRESS_CYPRESS,
-        functionName: "safeMint",
-        args: [`0x${values.to.slice(2)}`, values.uri.toString()], // Pass the 'to' and 'uri' values as arguments
+          chainId === 1001 ? CONTRACT_NFT_ADDRESS_BAOBAB : CONTRACT_NFT_ADDRESS_CYPRESS,
+        functionName: "shootingShitNFT",
+        args: [`0x${values.to.slice(2)}`], // Pass the 'to' and 'uri' values as arguments
       });
       toast({
         variant: "default",
         className: "bg-white",
         title: "Transaction successful",
-        description: "Fire Shit NFT minted successfully!",
+        description: "Shoot HackFi NFT minted successfully!",
       });
     } catch (error) {
       toast({
@@ -79,7 +77,7 @@ function HomePage() {
 
   return (
     <div className="w-full">
-      <Hero className="w-full flex items-center justify-center py-36px-10">
+      <Hero className="w-full flex items-center justify-center py-36px-10 gap-10">
         <div>
           <motion.h1
             initial={{
@@ -97,7 +95,7 @@ function HomePage() {
             className="text-sm  md:text-xl lg:text-xl font-semibold text-black text-justify dark:text-zinc-400 max-w-4xl leading-relaxed lg:leading-snug lg:text-left"
           >
             <Highlight className="mb-2.5 text-5xl lg:text-7xl -top-9 font-bold">
-              HackFi NFT for your friends
+              Shoot HackFi NFT for your friends
             </Highlight>
             {/* break line */} <br />
             The{" "}
@@ -111,11 +109,11 @@ function HomePage() {
               variant="default"
               size="default"
               className="bg-black flex mt-6 text-white">
-              HackFi Now
+              Shoot HackFi Now
             </Button>
           </Link>
         </div>
-        <div className=" ml-10 w-[20%] hidden lg:block">
+        <div className="w-[30%] hidden lg:block">
           <HeroImage />
         </div>
       </Hero>

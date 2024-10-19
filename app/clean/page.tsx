@@ -15,18 +15,18 @@ function AirdropPage() {
         <div>
           <h1 className="text-sm lg:text-xl font-semibold text-black w-[95%] dark:text-zinc-400 max-w-4xl leading-relaxed lg:leading-snug lg:text-left">
             <Highlight className="text-left mb-2.5 text-4xl lg:text-7xl -top-9 font-bold">
-              Clean Hack
+              Clean HackFi
             </Highlight>
             <br />
             Clean {" "}
             <span className="bg-primary bg-clip-text text-transparent">
-            Hack NFT 
+            HackFi NFT 
             </span>{" "}
             brings a refreshing twist to digital collectibles. It's a playful yet polished piece that stands out with its crisp design. Perfect for friends who appreciate a bit of humor and sophistication, this NFT adds a clean and clever touch to any collection.
           </h1>
           <CleanForm />
         </div>
-        <div className="w-[40%] hidden lg:block">
+        <div className="w-[30%] hidden lg:block">
           <HeroImage2 />
         </div>
       </Hero>

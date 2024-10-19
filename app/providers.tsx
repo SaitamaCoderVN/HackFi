@@ -13,53 +13,52 @@ import { WagmiProvider, http } from "wagmi";
 const { wallets } = getDefaultWallets();
 
 // Define the Unique chain
-const bifrostMainnet = {
-  id: 3068, // Sửa thành 8880 hoặc "0x22b0"
-  name: "Bifrost Mainnet",
-  network: "bifrost-mainnet",
+const opalTestnet = {
+  id: 8882, // Sửa thành 8880 hoặc "0x22b0"
+  name: "Opal",
+  network: "opal",
   nativeCurrency: {
-    name: "Bifrost Mainnet",
-    symbol: "BFC",
+    name: "Opal",
+    symbol: "OPL",
     decimals: 18,
   },
   rpcUrls: {
     default: {
-      http: ["https://public-01.mainnet.bifrostnetwork.com/rpc"],
-      websocket: ["wss://public-01.mainnet.bifrostnetwork.com/rpc"],
+      http: ["https://rpc-opal.unique.network"],
+      websocket: ["wss://ws-opal.unique.network"],
     },
     public: {
-      http: ["https://public-01.mainnet.bifrostnetwork.com/rpc"],
-      websocket: ["wss://public-01.mainnet.bifrostnetwork.com/rpc"],
+      http: ["https://rpc-opal.unique.network"],
+      websocket: ["wss://ws-opal.unique.network"],
     },
   },
   blockExplorers: {
-    default: { name: "BifrostScan", url: "https://explorer.mainnet.bifrostnetwork.com/tx/" },
+    default: { name: "Opal", url: "https://opal.subscan.io/" },
   },
-  testnet: false,
+  testnet: true,
 };
 
-// Define the Unique chain
-const bifrostTestnet = {
-  id: 49088,
-  name: "Bifrost Testnet",
-  network: "bifrost-testnet",
+const moonbaseAlphaTestnet = {
+  id: 1287, // Sửa thành 8880 hoặc "0x22b0"
+  name: "Moonbase Alpha",
+  network: "Moonbase Alpha",
   nativeCurrency: {
-    name: "Bifrost Testnet",
-    symbol: "BFC",
+    name: "Moonbase Alpha",
+    symbol: "DEV",
     decimals: 18,
   },
   rpcUrls: {
     default: {
-      http: ["https://public-01.testnet.bifrostnetwork.com/rpc"],
-      websocket: ["wss://public-01.testnet.bifrostnetwork.com/rpc"],
+      http: ["https://rpc.api.moonbase.moonbeam.network"],
+      websocket: ["wss://rpc.api.moonbase.moonbeam.network"],
     },
     public: {
-      http: ["https://public-01.testnet.bifrostnetwork.com/rpc"],
-      websocket: ["wss://public-01.testnet.bifrostnetwork.com/rpc"],
+      http: ["https://rpc.api.moonbase.moonbeam.network"],
+      websocket: ["wss://rpc.api.moonbase.moonbeam.network"],
     },
   },
   blockExplorers: {
-    default: { name: "BifrostScan", url: "https://explorer.testnet.bifrostnetwork.com/tx/" },
+    default: { name: "Moonbase Alpha", url: "https://moonbase.moonscan.io/" },
   },
   testnet: true,
 };
@@ -74,10 +73,10 @@ const config = getDefaultConfig({
       wallets: [trustWallet, ledgerWallet],
     },
   ],
-  chains: [bifrostMainnet, bifrostTestnet],
+  chains: [opalTestnet, moonbaseAlphaTestnet], // Thêm uniqueChain vào mảng chains
   transports: {
-    [3068]: http("https://public-01.mainnet.bifrostnetwork.com/rpc"),
-    [49088]: http("https://public-01.testnet.bifrostnetwork.com/rpc"),
+    [8882]: http("https://rpc-opal.unique.network"),
+    [1287]: http("https://rpc.api.moonbase.moonbeam.network"),
   },
   ssr: true,
 });
